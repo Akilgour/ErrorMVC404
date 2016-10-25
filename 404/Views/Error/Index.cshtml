@@ -1,4 +1,5 @@
-﻿@{
+﻿@model _404.Models.Error404 
+@{
     ViewBag.Title = "Index 404";
 }
 
@@ -7,3 +8,16 @@
 <div class="imgWrap">
     <img src="@Url.Content("~/Images/Error/404.jpg")" title="Car..... I mean page not found" />
 </div>
+
+@using (Html.BeginForm("EnterDetails", "Error"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.UserMessage)
+    </div>
+    <div class="editor-field">
+        @Html.TextAreaFor(model => model.UserMessage, new { rows = 10, cols = 50 })
+        @Html.ValidationMessageFor(model => model.UserMessage, "", new { @class = "text-danger" })
+    </div>
+}
