@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _404.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +13,12 @@ namespace _404.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Index(Error404 Error404)
+        {
+            return RedirectToAction("Index", "Home");
         }
     }
 }
